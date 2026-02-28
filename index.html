@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOLITUDE — The Space Within</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Metal+Mania&family=Orbitron:wght@400;600;900&family=Raleway:wght@100;200;300&display=swap" rel="stylesheet" />
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- Grain Overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- ───────────── HERO ───────────── -->
+  <section class="hero" id="hero">
+    <div class="hero__bg-lines" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="hero__content">
+      <p class="hero__pre-label">a meditation on</p>
+      <h1 class="hero__title">
+        <span class="hero__title-line" data-text="SOLI">SOLI</span>
+        <span class="hero__title-line accent" data-text="TUDE">TUDE</span>
+      </h1>
+      <p class="hero__sub">The art of choosing yourself.</p>
+
+      <div class="hero__scroll-hint">
+        <span class="hero__scroll-line"></span>
+        <span class="hero__scroll-text">SCROLL</span>
+      </div>
+    </div>
+
+    <!-- Decorative number -->
+    <div class="hero__deco-num" aria-hidden="true">01</div>
+  </section>
+
+  <!-- ───────────── BLOCK 1 ───────────── -->
+  <section class="text-block" id="block1">
+    <div class="text-block__inner">
+      <div class="block-label">I</div>
+      <p class="reveal-text large">
+        i like being alone..
+      </p>
+      <p class="reveal-text sub">
+        not because about i dont care..
+      </p>
+      <p class="reveal-text sub highlight">
+        but because peace feels better than forced conversations
+      </p>
+    </div>
+    <div class="section-deco-line"></div>
+  </section>
+
+  <!-- ───────────── IMAGE STRIP ───────────── -->
+  <section class="image-strip" id="imageStrip">
+    <div class="image-strip__inner">
+      <div class="img-card reveal-card">
+        <div class="img-card__frame">
+          <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80&grayscale" alt="Solitude - landscape" loading="lazy" />
+        </div>
+        <span class="img-card__label">STILLNESS</span>
+      </div>
+      <div class="img-card reveal-card">
+        <div class="img-card__frame">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80&grayscale" alt="Solitude - mountain" loading="lazy" />
+        </div>
+        <span class="img-card__label">CLARITY</span>
+      </div>
+      <div class="img-card reveal-card">
+        <div class="img-card__frame">
+          <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80&grayscale" alt="Solitude - forest" loading="lazy" />
+        </div>
+        <span class="img-card__label">FREEDOM</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────── BLOCK 2 ───────────── -->
+  <section class="text-block text-block--alt" id="block2">
+    <div class="text-block__inner">
+      <div class="block-label">II</div>
+      <p class="reveal-text large">
+        i like quiet mornings
+      </p>
+      <p class="reveal-text sub">
+        with no expectations..
+      </p>
+      <p class="reveal-text sub highlight">
+        long walks where i can hear my own thoughts
+      </p>
+      <p class="reveal-text large">
+        moments that belong..
+      </p>
+      <p class="reveal-text sub accent-text">
+        only to me..
+      </p>
+    </div>
+    <div class="section-deco-line"></div>
+  </section>
+
+  <!-- ───────────── GLITCH SECTION ───────────── -->
+  <section class="glitch-section" id="glitchSection">
+    <div class="glitch-section__inner">
+      <p class="glitch-text" data-text="once i feared silence..">once i feared silence..</p>
+      <p class="glitch-sub">now..i carve it</p>
+    </div>
+    <div class="glitch-section__bg-text" aria-hidden="true">SILENCE</div>
+  </section>
+
+  <!-- ───────────── BLOCK 3 ───────────── -->
+  <section class="text-block" id="block3">
+    <div class="text-block__inner">
+      <div class="block-label">III</div>
+      <p class="reveal-text sub">
+        because when you stop needing others to fill the emptiness,
+      </p>
+      <p class="reveal-text large highlight">
+        you realize it was never emptiness at all :)
+      </p>
+      <p class="reveal-text sub">
+        just space..waiting to be understood
+      </p>
+    </div>
+    <div class="section-deco-line"></div>
+  </section>
+
+  <!-- ───────────── DIVIDER QUOTE ───────────── -->
+  <section class="divider-quote" id="dividerQuote">
+    <div class="dq__line dq__line--left"></div>
+    <p class="dq__text reveal-text">solitude isnt loneliness</p>
+    <div class="dq__accent reveal-text">its clarity</div>
+    <div class="dq__line dq__line--right"></div>
+  </section>
+
+  <!-- ───────────── BLOCK 4 ───────────── -->
+  <section class="text-block text-block--alt" id="block4">
+    <div class="text-block__inner">
+      <div class="block-label">IV</div>
+      <p class="reveal-text sub">
+        and in the quiet,
+      </p>
+      <p class="reveal-text large">
+        I finally met the person
+      </p>
+      <p class="reveal-text large">
+        I was searching for..
+      </p>
+    </div>
+  </section>
+
+  <!-- ───────────── FINAL REVEAL ───────────── -->
+  <section class="final-reveal" id="finalReveal">
+    <div class="final-reveal__inner">
+      <div class="final-reveal__circle" aria-hidden="true"></div>
+      <p class="final-reveal__word">myself.</p>
+      <div class="final-reveal__underline"></div>
+    </div>
+  </section>
+
+  <!-- ───────────── IMAGE SHOWCASE ───────────── -->
+  <section class="showcase" id="showcase">
+    <div class="showcase__header">
+      <h2 class="showcase__title reveal-text">THE INNER WORLD</h2>
+      <p class="showcase__sub reveal-text">where silence becomes a language</p>
+    </div>
+    <div class="showcase__grid">
+      <div class="showcase-img reveal-card showcase-img--tall">
+        <div class="showcase-img__frame">
+          <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=800&q=80&grayscale" alt="Solitude portrait" loading="lazy" />
+        </div>
+      </div>
+      <div class="showcase-img reveal-card showcase-img--short">
+        <div class="showcase-img__frame">
+          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&q=80&grayscale" alt="Path ahead" loading="lazy" />
+        </div>
+      </div>
+      <div class="showcase-img reveal-card showcase-img--short">
+        <div class="showcase-img__frame">
+          <img src="https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=800&q=80&grayscale" alt="Winter solitude" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────── FOOTER ───────────── -->
+  <footer class="footer">
+    <div class="footer__line"></div>
+    <div class="footer__inner">
+      <p class="footer__tagline">SOLITUDE — THE ART OF CHOOSING YOURSELF</p>
+      <p class="footer__copy">crafted in silence · designed with clarity</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
