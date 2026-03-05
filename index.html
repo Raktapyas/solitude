@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOLITUDE — The Space Within</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Metal+Mania&family=Orbitron:wght@400;600;900&family=Raleway:ital,wght@0,100;0,200;0,300;1,100&display=swap" rel="stylesheet" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!--
+    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+    COMPASS-TICK CURSOR
+    Structure: rotating assembly of 4 cardinal
+    tick marks + a center diamond. On hover the
+    arms retract toward center and the diamond
+    blooms. Nothing like this exists.
+    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+  -->
+  <div class="cur" id="cur" aria-hidden="true">
+    <div class="cur__diamond" id="curDiamond"></div>
+    <div class="cur__arm cur__arm--n" id="curN"></div>
+    <div class="cur__arm cur__arm--e" id="curE"></div>
+    <div class="cur__arm cur__arm--s" id="curS"></div>
+    <div class="cur__arm cur__arm--w" id="curW"></div>
+    <!-- velocity trail streaks — populated by JS -->
+    <div class="cur__streak cur__streak--1" id="streak1"></div>
+    <div class="cur__streak cur__streak--2" id="streak2"></div>
+  </div>
+
+  <!-- canvas grain -->
+  <canvas class="grain-canvas" id="grainCanvas" aria-hidden="true"></canvas>
+
+  <!-- scroll spine -->
+  <div class="scroll-spine" id="scrollSpine" aria-hidden="true">
+    <div class="scroll-spine__fill" id="spineFill"></div>
+  </div>
+
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero" id="hero">
+    <div class="hero__grid" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <span class="hero__index" aria-hidden="true">00 — 01</span>
+
+    <div class="hero__content">
+      <p class="hero__pre">a meditation on</p>
+
+      <h1 class="hero__title hero__title--oneline" aria-label="SOLITUDE">
+        <span class="hw__bg"   aria-hidden="true">SOLITUDE</span>
+        <span class="hw__fill">SOLI<span class="hw__fill-green neon-flicker">TUDE</span></span>
+      </h1>
+
+      <p class="hero__sub">The art of choosing yourself.</p>
+    </div>
+
+    <span class="hero__ghost" aria-hidden="true">01</span>
+
+    <div class="hero__scroll-cue">
+      <span class="hero__scroll-line"></span>
+      <span class="hero__scroll-label">SCROLL</span>
+    </div>
+  </section>
+
+
+  <!-- ══════════ BLOCK I ══════════ -->
+  <section class="text-block" id="block1">
+    <div class="tb__inner">
+      <div class="tb__marker">
+        <span class="tb__num">I</span>
+        <div class="tb__rule"></div>
+      </div>
+      <p class="tb__giant reveal-up">alone.</p>
+      <div class="tb__lines">
+        <p class="tb__line reveal-up">i like being alone..</p>
+        <p class="tb__line tb__line--dim  reveal-up">not because about i dont care..</p>
+        <p class="tb__line tb__line--green reveal-up">but because peace feels better than forced conversations</p>
+      </div>
+    </div>
+    <div class="blade"></div>
+  </section>
+
+
+  <!-- ══════════ IMAGE STRIP ══════════ -->
+  <section class="img-strip" id="imgStrip">
+    <div class="img-strip__row">
+      <figure class="img-card reveal-card">
+        <div class="img-card__frame">
+          <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=700&q=80" alt="Stillness" loading="lazy" />
+        </div>
+        <figcaption>STILLNESS</figcaption>
+      </figure>
+      <figure class="img-card reveal-card">
+        <div class="img-card__frame">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80" alt="Clarity" loading="lazy" />
+        </div>
+        <figcaption>CLARITY</figcaption>
+      </figure>
+      <figure class="img-card reveal-card">
+        <div class="img-card__frame">
+          <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&q=80" alt="Freedom" loading="lazy" />
+        </div>
+        <figcaption>FREEDOM</figcaption>
+      </figure>
+    </div>
+  </section>
+
+
+  <!-- ══════════ BLOCK II ══════════ -->
+  <section class="text-block text-block--dark" id="block2">
+    <div class="tb__inner">
+      <div class="tb__marker">
+        <span class="tb__num">II</span>
+        <div class="tb__rule"></div>
+      </div>
+      <p class="tb__giant reveal-up">quiet.</p>
+      <div class="tb__lines">
+        <p class="tb__line reveal-up">i like quiet mornings with no expectations..</p>
+        <p class="tb__line tb__line--dim   reveal-up">long walks where i can hear my own thoughts</p>
+        <p class="tb__line reveal-up">moments that belong..</p>
+        <p class="tb__line tb__line--green reveal-up">only to me..</p>
+      </div>
+    </div>
+    <div class="blade"></div>
+  </section>
+
+
+  <!-- ══════════ GLITCH BAND ══════════ -->
+  <section class="glitch-band" id="glitchSection">
+    <span class="gb__ghost" aria-hidden="true">SILENCE</span>
+    <div class="gb__content">
+      <div class="stroke-reveal" id="strokeReveal1">
+        <span class="sr__stroke" aria-hidden="true">once i feared silence..</span>
+        <span class="sr__solid">once i feared silence..</span>
+      </div>
+      <p class="gb__response" id="gbResponse">now..i carve it</p>
+    </div>
+  </section>
+
+
+  <!-- ══════════ BLOCK III ══════════ -->
+  <section class="text-block" id="block3">
+    <div class="tb__inner">
+      <div class="tb__marker">
+        <span class="tb__num">III</span>
+        <div class="tb__rule"></div>
+      </div>
+      <p class="tb__giant reveal-up">empty?</p>
+      <div class="tb__lines">
+        <p class="tb__line tb__line--dim   reveal-up">because when you stop needing others to fill the emptiness,</p>
+        <p class="tb__line tb__line--green reveal-up">you realize it was never emptiness at all&nbsp;:)</p>
+        <p class="tb__line tb__line--dim   reveal-up">just space..waiting to be understood</p>
+      </div>
+    </div>
+    <div class="blade"></div>
+  </section>
+
+
+  <!-- ══════════ PIVOT ══════════ -->
+  <section class="pivot" id="pivot">
+    <div class="pivot__inner">
+      <p class="pivot__small reveal-up">solitude isnt loneliness</p>
+      <div class="stroke-reveal stroke-reveal--green stroke-reveal--display" id="strokeReveal2">
+        <span class="sr__stroke" aria-hidden="true">ITS CLARITY</span>
+        <span class="sr__solid">ITS CLARITY</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════ BLOCK IV ══════════ -->
+  <section class="text-block text-block--dark" id="block4">
+    <div class="tb__inner">
+      <div class="tb__marker">
+        <span class="tb__num">IV</span>
+        <div class="tb__rule"></div>
+      </div>
+      <p class="tb__giant reveal-up">found.</p>
+      <div class="tb__lines">
+        <p class="tb__line tb__line--dim reveal-up">and in the quiet,</p>
+        <p class="tb__line reveal-up">I finally met the person</p>
+        <p class="tb__line reveal-up">I was searching for..</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════ FINALE ══════════ -->
+  <section class="finale" id="finale">
+    <div class="finale__orbit"   aria-hidden="true"></div>
+    <div class="finale__orbit finale__orbit--2" aria-hidden="true"></div>
+    <div class="stroke-reveal stroke-reveal--white stroke-reveal--finale" id="strokeReveal3">
+      <span class="sr__stroke" aria-hidden="true">myself.</span>
+      <span class="sr__solid">myself.</span>
+    </div>
+    <div class="finale__blade" id="finaleBlade"></div>
+  </section>
+
+
+  <!-- ══════════ SHOWCASE ══════════ -->
+  <section class="showcase" id="showcase">
+    <header class="showcase__head">
+      <h2 class="showcase__title reveal-up">THE INNER WORLD</h2>
+      <p  class="showcase__sub   reveal-up">where silence becomes a language</p>
+    </header>
+    <div class="showcase__grid">
+      <div class="sc-img sc-img--tall reveal-card">
+        <div class="sc-img__frame">
+          <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=900&q=80" alt="Portrait" loading="lazy" />
+        </div>
+        <span class="sc-img__num" aria-hidden="true">01</span>
+      </div>
+      <div class="sc-img reveal-card">
+        <div class="sc-img__frame">
+          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=900&q=80" alt="The path" loading="lazy" />
+        </div>
+        <span class="sc-img__num" aria-hidden="true">02</span>
+      </div>
+      <div class="sc-img reveal-card">
+        <div class="sc-img__frame">
+          <img src="https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=900&q=80" alt="Winter silence" loading="lazy" />
+        </div>
+        <span class="sc-img__num" aria-hidden="true">03</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="footer">
+    <div class="footer__blade"></div>
+    <p class="footer__brand">SOLITUDE — THE ART OF CHOOSING YOURSELF</p>
+    <p class="footer__credit">Crafted by Basudev Dhakal</p>
+
+    <!--
+      A single pixel — rainbow cycling — lives in the very
+      bottom-right corner. No label. No hint. Just there.
+    -->
+    <a class="easter-egg"
+       href="https://raktapyas.github.io/portfilo/"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-hidden="true"
+       tabindex="-1"></a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
