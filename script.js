@@ -9,17 +9,17 @@
        — velocity streak trails (2 lines, velocity-driven)
        — hover: arms retract, diamond blooms
        — click: inward pulse snap
-   3.  Scroll Spine (GSAP scrub)
-   4.  Hero parallax
-   5.  Reveal animations (fade-up, stagger)
-   6.  Stroke Reveals (clip-path)
-   7.  Glitch Band
-   8.  Blade Dividers
-   9.  Finale
-   10. Showcase tilt + stagger
-   11. Section markers
-   12. Progress bar
-   13. Footer
+   2.  Scroll Spine (GSAP scrub)
+   3.  Hero parallax
+   4.  Reveal animations (fade-up, stagger)
+   5.  Stroke Reveals (clip-path)
+   6.  Glitch Band
+   7.  Blade Dividers
+   8.  Finale
+   9.  Showcase tilt + stagger
+   10. Section markers
+   11. Progress bar
+   12. Footer
    ============================================================ */
 
 'use strict';
@@ -59,139 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
     resize();
     drawNoise();
     window.addEventListener('resize', resize, { passive: true });
-  })();
-
-
-  /* ════════════════════════════════════════
-     2. COMPASS-TICK CURSOR
-     ─────────────────────────────────────
-     Concept:
-       A minimal targeting assembly —
-       four 1×7px arms at N/E/S/W orbit a
-       tiny diamond center. The assembly
-       slow-rotates at idle. Two ghost
-       streak lines trail behind at the
-       inverse of travel velocity.
-
-       Hover → arms retract, diamond grows,
-               glow fires.
-       Click → inward snap pulse.
-       Idle  → arms slowly rotate (CSS does
-               this via a continuous GSAP tween).
-  ════════════════════════════════════════ */
-  (() => {
-    const cur     = document.getElementById('cur');
-    const diamond = document.getElementById('curDiamond');
-    const armN    = document.getElementById('curN');
-    const armE    = document.getElementById('curE');
-    const armS    = document.getElementById('curS');
-    const armW    = document.getElementById('curW');
-    const streak1 = document.getElementById('streak1');
-    const streak2 = document.getElementById('streak2');
-    if (!cur) return;
-
-    /* ── Position tracking ── */
-    let mx = 0, my = 0;        // raw mouse
-    let cx = 0, cy = 0;        // lerped position for the wrapper
-    let vx = 0, vy = 0;        // velocity
-    let pvx= 0, pvy= 0;        // previous velocity (for smoothing)
-    let idleAngle = 0;         // rotation angle for idle spin
-    let lastTime  = performance.now();
-    let isHover   = false;
-
-    /* ── Mouse events ── */
-    document.addEventListener('mousemove', (e) => {
-      mx = e.clientX;
-      my = e.clientY;
-    }, { passive: true });
-
-    document.addEventListener('mousedown', () => {
-      document.body.classList.add('is-clicking');
-      setTimeout(() => document.body.classList.remove('is-clicking'), 200);
-    });
-
-    document.addEventListener('mouseleave', () => { cur.style.opacity = '0'; });
-    document.addEventListener('mouseenter', () => { cur.style.opacity = '1'; });
-
-    /* ── Hover targets ── */
-    document.querySelectorAll(
-      'a, button, .img-card, .sc-img, .stroke-reveal, .tb__line--green, figcaption'
-    ).forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        isHover = true;
-        document.body.classList.add('is-hovering');
-      });
-      el.addEventListener('mouseleave', () => {
-        isHover = false;
-        document.body.classList.remove('is-hovering');
-      });
-    });
-
-    /* ── Main animation loop ── */
-    function tick(now) {
-      const dt = Math.min((now - lastTime) / 1000, 0.05); // delta in seconds
-      lastTime = now;
-
-      /* Lerp cursor position */
-      const lerpFactor = 0.14;
-      vx = mx - cx;
-      vy = my - cy;
-      cx += vx * lerpFactor;
-      cy += vy * lerpFactor;
-
-      /* Translate the whole assembly */
-      cur.style.transform = `translate(${cx}px, ${cy}px)`;
-
-      /* ── Idle rotation ──
-         When not hovering, the arms slowly orbit.
-         We add to idleAngle each frame, apply as
-         rotation on all four arms simultaneously. */
-      if (!isHover) {
-        idleAngle += dt * 18; // 18 deg/second = one full rotation ~20s
-        if (idleAngle > 360) idleAngle -= 360;
-
-        armN.style.transform = `rotate(${idleAngle}deg) translateY(-14px)`;
-        armE.style.transform = `rotate(${idleAngle}deg) translateX(7px)`;
-        armS.style.transform = `rotate(${idleAngle}deg) translateY(7px)`;
-        armW.style.transform = `rotate(${idleAngle}deg) translateX(-14px)`;
-      }
-
-      /* ── Velocity streaks ──
-         Compute speed from velocity components.
-         Rotate streak lines to trail direction.
-         Length is proportional to speed.                */
-      const speed = Math.sqrt(vx * vx + vy * vy);
-      // Smooth velocity
-      pvx = pvx * 0.7 + vx * 0.3;
-      pvy = pvy * 0.7 + vy * 0.3;
-
-      if (speed > 1.5) {
-        // Angle pointing AWAY from travel direction
-        const angle = Math.atan2(pvy, pvx) * (180 / Math.PI) + 180;
-        const len1  = Math.min(speed * 1.8, 55);
-        const len2  = Math.min(speed * 1.2, 35);
-
-        streak1.style.transform = `rotate(${angle}deg)`;
-        streak2.style.transform = `rotate(${angle + 6}deg)`;
-        streak1.style.width     = `${len1}px`;
-        streak2.style.width     = `${len2}px`;
-        streak1.style.opacity   = Math.min(speed / 40, 0.55).toString();
-        streak2.style.opacity   = Math.min(speed / 60, 0.25).toString();
-      } else {
-        // Fade out streaks at rest
-        streak1.style.width   = `${Math.max(parseFloat(streak1.style.width || '0') * 0.85, 0)}px`;
-        streak2.style.width   = `${Math.max(parseFloat(streak2.style.width || '0') * 0.85, 0)}px`;
-        streak1.style.opacity = (parseFloat(streak1.style.opacity || '0') * 0.88).toString();
-        streak2.style.opacity = (parseFloat(streak2.style.opacity || '0') * 0.88).toString();
-      }
-
-      requestAnimationFrame(tick);
-    }
-
-    requestAnimationFrame((t) => {
-      lastTime = t;
-      requestAnimationFrame(tick);
-    });
   })();
 
 

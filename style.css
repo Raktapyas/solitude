@@ -45,7 +45,7 @@
 
 /* ─── RESET ──────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html   { font-size: 16px; scroll-behavior: smooth; cursor: none; }
+html   { font-size: 16px; scroll-behavior: smooth; }
 body   {
   background: var(--black);
   color: var(--white);
@@ -75,123 +75,6 @@ img    { display: block; max-width: 100%; }
   transform-origin: top;
 }
 
-/* ════════════════════════════════════════════
-   COMPASS-TICK CURSOR
-   ─────────────────────────────────────────
-   Concept: A rotating targeting assembly.
-   Four 1×8px arms at N / E / S / W orbit a
-   central 4×4 diamond. The arms sit at a
-   fixed radial distance from the diamond.
-   On idle:  the whole assembly slow-rotates.
-   On hover: arms retract to zero distance,
-             diamond blooms, glow ignites.
-   On click: a brief inward "pulse" snap.
-   Two directional streaks trail behind to
-   show velocity — grow when moving fast,
-   disappear at rest.
-════════════════════════════════════════════ */
-
-/* Wrapper — this is what JS translates */
-.cur {
-  position: fixed;
-  top: 0; left: 0;
-  width: 0; height: 0;               /* zero size — children position from center */
-  pointer-events: none;
-  z-index: 9999;
-  will-change: transform;
-}
-
-/* ── Center diamond ── */
-.cur__diamond {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  background: var(--green);
-  transform: translate(-50%, -50%) rotate(45deg) scale(1);
-  /* The rotate(45deg) makes a square look like a diamond */
-  transition:
-    transform 0.35s var(--expo),
-    background 0.25s,
-    box-shadow 0.25s;
-}
-
-/* ── Cardinal arms ── */
-.cur__arm {
-  position: absolute;
-  background: var(--green);
-  transform-origin: center center;
-  transition:
-    transform 0.4s var(--expo),
-    opacity 0.3s,
-    box-shadow 0.3s;
-  opacity: 0.75;
-}
-
-/* North / South — vertical bars */
-.cur__arm--n,
-.cur__arm--s {
-  width: 1px;
-  height: 7px;
-  left: -0.5px;                      /* center horizontally */
-}
-
-/* East / West — horizontal bars */
-.cur__arm--e,
-.cur__arm--w {
-  width: 7px;
-  height: 1px;
-  top: -0.5px;                       /* center vertically */
-}
-
-/* Radial offset — arms sit 9px from diamond center */
-.cur__arm--n { transform: translateY(-14px); }
-.cur__arm--s { transform: translateY( 7px);  }
-.cur__arm--e { transform: translateX( 7px);  }
-.cur__arm--w { transform: translateX(-14px); }
-
-/* ── Velocity streak trails ── */
-/* Two thin lines that appear behind the cursor
-   when moving and fade away at rest.
-   JS rotates them to the inverse of travel direction. */
-.cur__streak {
-  position: absolute;
-  height: 1px;
-  background: linear-gradient(to left, var(--green), transparent);
-  top: -0.5px;
-  right: 0;
-  width: 0;                          /* JS grows this 0 → N px */
-  transform-origin: right center;
-  opacity: 0;
-  pointer-events: none;
-}
-.cur__streak--1 { opacity: 0.5; }
-.cur__streak--2 { opacity: 0.2; transform: scaleY(1.5); }
-
-/* ── HOVER STATE (class added by JS on body) ── */
-body.is-hovering .cur__diamond {
-  transform: translate(-50%, -50%) rotate(45deg) scale(4);
-  background: var(--green);
-  box-shadow: var(--glow-green);
-}
-body.is-hovering .cur__arm {
-  opacity: 0;
-  /* Arms retract — N/S collapse to zero, E/W collapse to zero */
-}
-body.is-hovering .cur__arm--n { transform: translateY(-2px); }
-body.is-hovering .cur__arm--s { transform: translateY( 2px); }
-body.is-hovering .cur__arm--e { transform: translateX( 2px); }
-body.is-hovering .cur__arm--w { transform: translateX(-2px); }
-
-/* ── CLICK STATE ── */
-body.is-clicking .cur__diamond {
-  transform: translate(-50%, -50%) rotate(45deg) scale(1.5);
-  box-shadow: 0 0 8px var(--green);
-}
-body.is-clicking .cur__arm--n { transform: translateY(-6px); }
-body.is-clicking .cur__arm--s { transform: translateY( 1px); }
-body.is-clicking .cur__arm--e { transform: translateX( 1px); }
-body.is-clicking .cur__arm--w { transform: translateX(-6px); }
-
 /* ─── GRAIN CANVAS ───────────────────────────────────────── */
 .grain-canvas {
   position: fixed;
@@ -213,11 +96,15 @@ body.is-clicking .cur__arm--w { transform: translateX(-6px); }
 .hero {
   position: relative;
   min-height: 100svh;
+  min-height: calc(100dvh);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   background: var(--black);
+  /* safe area for notched phones */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .hero__grid {
@@ -256,7 +143,8 @@ body.is-clicking .cur__arm--w { transform: translateX(-6px); }
 .hero__content {
   position: relative; z-index: 2;
   text-align: center;
-  padding: 0 clamp(20px, 5vw, 60px);
+  padding: 0 clamp(16px, 5vw, 60px);
+  width: 100%;
 }
 
 .hero__pre {
@@ -339,7 +227,7 @@ body.is-clicking .cur__arm--w { transform: translateX(-6px); }
 
 .hero__scroll-cue {
   position: absolute;
-  bottom: 36px; left: 50%;
+  bottom: max(36px, calc(36px + env(safe-area-inset-bottom))); left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
@@ -905,8 +793,6 @@ body.is-clicking .cur__arm--w { transform: translateX(-6px); }
 }
 
 @media (max-width: 768px) {
-  html            { cursor: auto; }
-  .cur            { display: none; }
   .scroll-spine   { display: none; }
 
   .img-strip__row { flex-direction: column; align-items: center; }
@@ -926,7 +812,9 @@ body.is-clicking .cur__arm--w { transform: translateX(-6px); }
 }
 
 @media (max-width: 480px) {
-  .hero__title              { font-size: clamp(4rem, 18vw, 7rem); }
+  .hero__title              { font-size: clamp(3.2rem, 17vw, 7rem); word-break: break-word; }
+  .hero__pre                { letter-spacing: 0.28em; }
+  .hero__sub                { letter-spacing: 0.22em; }
   .tb__giant                { font-size: clamp(3rem, 16vw, 6rem); }
   .stroke-reveal--display   { font-size: clamp(2rem, 12vw, 5rem); }
   .stroke-reveal--finale    { font-size: clamp(3rem, 16vw, 7rem); }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>SOLITUDE — The Space Within</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,26 +15,6 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!--
-    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-    COMPASS-TICK CURSOR
-    Structure: rotating assembly of 4 cardinal
-    tick marks + a center diamond. On hover the
-    arms retract toward center and the diamond
-    blooms. Nothing like this exists.
-    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-  -->
-  <div class="cur" id="cur" aria-hidden="true">
-    <div class="cur__diamond" id="curDiamond"></div>
-    <div class="cur__arm cur__arm--n" id="curN"></div>
-    <div class="cur__arm cur__arm--e" id="curE"></div>
-    <div class="cur__arm cur__arm--s" id="curS"></div>
-    <div class="cur__arm cur__arm--w" id="curW"></div>
-    <!-- velocity trail streaks — populated by JS -->
-    <div class="cur__streak cur__streak--1" id="streak1"></div>
-    <div class="cur__streak cur__streak--2" id="streak2"></div>
-  </div>
 
   <!-- canvas grain -->
   <canvas class="grain-canvas" id="grainCanvas" aria-hidden="true"></canvas>
