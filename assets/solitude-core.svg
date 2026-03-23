@@ -1,0 +1,71 @@
+<svg width="900" height="240" viewBox="0 0 900 240" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg { fill: #050505; }
+    .main {
+      font-family: monospace;
+      font-size: 54px;
+      fill: #e8e8e8;
+      letter-spacing: 6px;
+    }
+    .sub {
+      font-family: monospace;
+      font-size: 14px;
+      fill: #777;
+      letter-spacing: 3px;
+    }
+
+    .g1 { fill: #00ff9f; opacity: 0.6; animation: g1 3s infinite; }
+    .g2 { fill: #ff004c; opacity: 0.4; animation: g2 3s infinite; }
+
+    @keyframes g1 {
+      0%,100% { transform: translate(0,0); }
+      20% { transform: translate(-2px,1px); }
+      40% { transform: translate(-1px,-1px); }
+      60% { transform: translate(2px,1px); }
+      80% { transform: translate(1px,-2px); }
+    }
+
+    @keyframes g2 {
+      0%,100% { transform: translate(0,0); }
+      20% { transform: translate(2px,-1px); }
+      40% { transform: translate(1px,2px); }
+      60% { transform: translate(-2px,-1px); }
+      80% { transform: translate(-1px,2px); }
+    }
+
+    .scanline {
+      stroke: rgba(255,255,255,0.03);
+      stroke-width: 1;
+    }
+  </style>
+
+  <rect class="bg" width="100%" height="100%"/>
+
+  <!-- subtle scanlines -->
+  <g>
+    <line x1="0" y1="20" x2="900" y2="20" class="scanline"/>
+    <line x1="0" y1="60" x2="900" y2="60" class="scanline"/>
+    <line x1="0" y1="100" x2="900" y2="100" class="scanline"/>
+    <line x1="0" y1="140" x2="900" y2="140" class="scanline"/>
+    <line x1="0" y1="180" x2="900" y2="180" class="scanline"/>
+  </g>
+
+  <!-- main text -->
+  <text x="50%" y="48%" text-anchor="middle" dominant-baseline="middle" class="main">
+    SOLITUDE
+  </text>
+
+  <!-- glitch layers -->
+  <text x="50%" y="48%" text-anchor="middle" dominant-baseline="middle" class="main g1">
+    SOLITUDE
+  </text>
+
+  <text x="50%" y="48%" text-anchor="middle" dominant-baseline="middle" class="main g2">
+    SOLITUDE
+  </text>
+
+  <!-- subtitle -->
+  <text x="50%" y="75%" text-anchor="middle" class="sub">
+    THE ART OF CHOOSING YOURSELF
+  </text>
+</svg>
