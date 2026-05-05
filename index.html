@@ -16,223 +16,369 @@
 </head>
 <body>
 
-  <!-- canvas grain -->
+  <!-- ══ GRAIN ══ -->
   <canvas class="grain-canvas" id="grainCanvas" aria-hidden="true"></canvas>
 
-  <!-- scroll spine -->
+  <!-- ══ PROGRESS BAR ══ -->
+  <div id="progress-bar"></div>
+
+  <!-- ══ SCROLL SPINE ══ -->
   <div class="scroll-spine" id="scrollSpine" aria-hidden="true">
     <div class="scroll-spine__fill" id="spineFill"></div>
   </div>
 
 
-  <!-- ══════════ HERO ══════════ -->
+  <!-- ══════════════════════════════════════
+       HERO
+  ══════════════════════════════════════ -->
   <section class="hero" id="hero">
+
+    <!-- Vertical grid lines -->
     <div class="hero__grid" aria-hidden="true">
       <span></span><span></span><span></span><span></span><span></span>
     </div>
 
+    <!-- Cinematic vignette -->
+    <div class="hero__vignette" aria-hidden="true"></div>
+
+    <!-- Top-right index -->
     <span class="hero__index" aria-hidden="true">00 — 01</span>
 
+    <!-- Center content -->
     <div class="hero__content">
       <p class="hero__pre">a meditation on</p>
 
-      <h1 class="hero__title hero__title--oneline" aria-label="SOLITUDE">
-        <span class="hw__bg"   aria-hidden="true">SOLITUDE</span>
-        <span class="hw__fill">SOLI<span class="hw__fill-green neon-flicker">TUDE</span></span>
+      <h1 class="hero__title" aria-label="SOLITUDE">
+        <span class="hw__bg" aria-hidden="true">SOLITUDE</span>
+        <span class="hw__fill">
+          SOLI<span class="hw__fill-green neon-flicker">TUDE</span>
+        </span>
       </h1>
 
       <p class="hero__sub">The art of choosing yourself.</p>
     </div>
 
+    <!-- Ghost number — floats -->
     <span class="hero__ghost" aria-hidden="true">01</span>
 
-    <div class="hero__scroll-cue">
+    <!-- Scroll cue -->
+    <div class="hero__scroll-cue" aria-hidden="true">
       <span class="hero__scroll-line"></span>
       <span class="hero__scroll-label">SCROLL</span>
     </div>
-  </section>
+
+  </section><!-- /hero -->
 
 
-  <!-- ══════════ BLOCK I ══════════ -->
+  <!-- ══════════════════════════════════════
+       BLOCK I — ALONE
+  ══════════════════════════════════════ -->
   <section class="text-block" id="block1">
     <div class="tb__inner">
+
       <div class="tb__marker">
         <span class="tb__num">I</span>
         <div class="tb__rule"></div>
       </div>
+
       <p class="tb__giant reveal-up">alone.</p>
+
       <div class="tb__lines">
-        <p class="tb__line reveal-up">i like being alone..</p>
-        <p class="tb__line tb__line--dim  reveal-up">not because about i dont care..</p>
-        <p class="tb__line tb__line--green reveal-up">but because peace feels better than forced conversations</p>
+        <p class="tb__line reveal-up word-anim">
+          i like being alone..
+        </p>
+        <p class="tb__line tb__line--dim reveal-up word-anim">
+          not because i dont care..
+        </p>
+        <p class="tb__line tb__line--green reveal-up word-anim">
+          but because peace feels better than forced conversations
+        </p>
       </div>
+
     </div>
     <div class="blade"></div>
-  </section>
+  </section><!-- /block1 -->
 
 
-  <!-- ══════════ IMAGE STRIP ══════════ -->
+  <!-- ══════════════════════════════════════
+       IMAGE STRIP — STILLNESS / CLARITY / FREEDOM
+  ══════════════════════════════════════ -->
   <section class="img-strip" id="imgStrip">
     <div class="img-strip__row">
+
       <figure class="img-card reveal-card">
         <div class="img-card__frame">
-          <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=700&q=80" alt="Stillness" loading="lazy" />
+          <img
+            src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=700&q=80"
+            alt="Stillness"
+            loading="lazy"
+          />
         </div>
         <figcaption>STILLNESS</figcaption>
       </figure>
+
       <figure class="img-card reveal-card">
         <div class="img-card__frame">
-          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80" alt="Clarity" loading="lazy" />
+          <img
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80"
+            alt="Clarity"
+            loading="lazy"
+          />
         </div>
         <figcaption>CLARITY</figcaption>
       </figure>
+
       <figure class="img-card reveal-card">
         <div class="img-card__frame">
-          <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&q=80" alt="Freedom" loading="lazy" />
+          <img
+            src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&q=80"
+            alt="Freedom"
+            loading="lazy"
+          />
         </div>
         <figcaption>FREEDOM</figcaption>
       </figure>
+
     </div>
-  </section>
+  </section><!-- /imgStrip -->
 
 
-  <!-- ══════════ BLOCK II ══════════ -->
+  <!-- ══════════════════════════════════════
+       BLOCK II — QUIET
+  ══════════════════════════════════════ -->
   <section class="text-block text-block--dark" id="block2">
     <div class="tb__inner">
+
       <div class="tb__marker">
         <span class="tb__num">II</span>
         <div class="tb__rule"></div>
       </div>
+
       <p class="tb__giant reveal-up">quiet.</p>
+
       <div class="tb__lines">
-        <p class="tb__line reveal-up">i like quiet mornings with no expectations..</p>
-        <p class="tb__line tb__line--dim   reveal-up">long walks where i can hear my own thoughts</p>
-        <p class="tb__line reveal-up">moments that belong..</p>
-        <p class="tb__line tb__line--green reveal-up">only to me..</p>
+        <p class="tb__line reveal-up word-anim">
+          i like quiet mornings with no expectations..
+        </p>
+        <p class="tb__line tb__line--dim reveal-up word-anim">
+          long walks where i can hear my own thoughts
+        </p>
+        <p class="tb__line reveal-up word-anim">
+          moments that belong..
+        </p>
+        <p class="tb__line tb__line--green reveal-up word-anim">
+          only to me..
+        </p>
       </div>
+
     </div>
     <div class="blade"></div>
-  </section>
+  </section><!-- /block2 -->
 
 
-  <!-- ══════════ GLITCH BAND ══════════ -->
+  <!-- ══════════════════════════════════════
+       GLITCH BAND
+  ══════════════════════════════════════ -->
   <section class="glitch-band" id="glitchSection">
+
+    <!-- Giant ghost word breathes behind content -->
     <span class="gb__ghost" aria-hidden="true">SILENCE</span>
+
     <div class="gb__content">
+
+      <!-- Stroke-reveal: text paints in left→right -->
       <div class="stroke-reveal" id="strokeReveal1">
         <span class="sr__stroke" aria-hidden="true">once i feared silence..</span>
         <span class="sr__solid">once i feared silence..</span>
       </div>
+
+      <!-- Response slams in, then neon flickers -->
       <p class="gb__response" id="gbResponse">now..i carve it</p>
+
     </div>
-  </section>
+
+  </section><!-- /glitchSection -->
 
 
-  <!-- ══════════ BLOCK III ══════════ -->
+  <!-- ══════════════════════════════════════
+       BLOCK III — EMPTY
+  ══════════════════════════════════════ -->
   <section class="text-block" id="block3">
     <div class="tb__inner">
+
       <div class="tb__marker">
         <span class="tb__num">III</span>
         <div class="tb__rule"></div>
       </div>
+
       <p class="tb__giant reveal-up">empty?</p>
+
       <div class="tb__lines">
-        <p class="tb__line tb__line--dim   reveal-up">because when you stop needing others to fill the emptiness,</p>
-        <p class="tb__line tb__line--green reveal-up">you realize it was never emptiness at all&nbsp;:)</p>
-        <p class="tb__line tb__line--dim   reveal-up">just space..waiting to be understood</p>
+        <p class="tb__line tb__line--dim reveal-up word-anim">
+          because when you stop needing others to fill the emptiness,
+        </p>
+        <p class="tb__line tb__line--green reveal-up word-anim">
+          you realize it was never emptiness at all&nbsp;:)
+        </p>
+        <p class="tb__line tb__line--dim reveal-up word-anim">
+          just space..waiting to be understood
+        </p>
       </div>
+
     </div>
     <div class="blade"></div>
-  </section>
+  </section><!-- /block3 -->
 
 
-  <!-- ══════════ PIVOT ══════════ -->
+  <!-- ══════════════════════════════════════
+       PIVOT — ITS CLARITY
+  ══════════════════════════════════════ -->
   <section class="pivot" id="pivot">
     <div class="pivot__inner">
+
       <p class="pivot__small reveal-up">solitude isnt loneliness</p>
-      <div class="stroke-reveal stroke-reveal--green stroke-reveal--display" id="strokeReveal2">
+
+      <!-- Large stroke-reveal with gold fill -->
+      <div
+        class="stroke-reveal stroke-reveal--green stroke-reveal--display"
+        id="strokeReveal2"
+      >
         <span class="sr__stroke" aria-hidden="true">ITS CLARITY</span>
         <span class="sr__solid">ITS CLARITY</span>
       </div>
+
     </div>
-  </section>
+  </section><!-- /pivot -->
 
 
-  <!-- ══════════ BLOCK IV ══════════ -->
+  <!-- ══════════════════════════════════════
+       BLOCK IV — FOUND
+  ══════════════════════════════════════ -->
   <section class="text-block text-block--dark" id="block4">
     <div class="tb__inner">
+
       <div class="tb__marker">
         <span class="tb__num">IV</span>
         <div class="tb__rule"></div>
       </div>
+
       <p class="tb__giant reveal-up">found.</p>
+
       <div class="tb__lines">
-        <p class="tb__line tb__line--dim reveal-up">and in the quiet,</p>
-        <p class="tb__line reveal-up">I finally met the person</p>
-        <p class="tb__line reveal-up">I was searching for..</p>
+        <p class="tb__line tb__line--dim reveal-up word-anim">
+          and in the quiet,
+        </p>
+        <p class="tb__line reveal-up word-anim">
+          I finally met the person
+        </p>
+        <p class="tb__line reveal-up word-anim">
+          I was searching for..
+        </p>
       </div>
+
     </div>
-  </section>
+  </section><!-- /block4 -->
 
 
-  <!-- ══════════ FINALE ══════════ -->
+  <!-- ══════════════════════════════════════
+       FINALE — MYSELF.
+  ══════════════════════════════════════ -->
   <section class="finale" id="finale">
-    <div class="finale__orbit"   aria-hidden="true"></div>
+
+    <!-- Two pulsing orbit rings -->
+    <div class="finale__orbit"          aria-hidden="true"></div>
     <div class="finale__orbit finale__orbit--2" aria-hidden="true"></div>
-    <div class="stroke-reveal stroke-reveal--white stroke-reveal--finale" id="strokeReveal3">
+
+    <!-- The final word, massive stroke reveal -->
+    <div
+      class="stroke-reveal stroke-reveal--white stroke-reveal--finale"
+      id="strokeReveal3"
+    >
       <span class="sr__stroke" aria-hidden="true">myself.</span>
       <span class="sr__solid">myself.</span>
     </div>
+
+    <!-- Glowing horizontal blade that blooms on entry -->
     <div class="finale__blade" id="finaleBlade"></div>
-  </section>
+
+  </section><!-- /finale -->
 
 
-  <!-- ══════════ SHOWCASE ══════════ -->
+  <!-- ══════════════════════════════════════
+       SHOWCASE — THE INNER WORLD
+  ══════════════════════════════════════ -->
   <section class="showcase" id="showcase">
+
     <header class="showcase__head">
       <h2 class="showcase__title reveal-up">THE INNER WORLD</h2>
       <p  class="showcase__sub   reveal-up">where silence becomes a language</p>
     </header>
+
     <div class="showcase__grid">
+
+      <!-- Tall left cell -->
       <div class="sc-img sc-img--tall reveal-card">
         <div class="sc-img__frame">
-          <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=900&q=80" alt="Portrait" loading="lazy" />
+          <img
+            src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=900&q=80"
+            alt="Portrait"
+            loading="lazy"
+          />
         </div>
         <span class="sc-img__num" aria-hidden="true">01</span>
       </div>
+
+      <!-- Top right -->
       <div class="sc-img reveal-card">
         <div class="sc-img__frame">
-          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=900&q=80" alt="The path" loading="lazy" />
+          <img
+            src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=900&q=80"
+            alt="The path"
+            loading="lazy"
+          />
         </div>
         <span class="sc-img__num" aria-hidden="true">02</span>
       </div>
+
+      <!-- Bottom right -->
       <div class="sc-img reveal-card">
         <div class="sc-img__frame">
-          <img src="https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=900&q=80" alt="Winter silence" loading="lazy" />
+          <img
+            src="https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=900&q=80"
+            alt="Winter silence"
+            loading="lazy"
+          />
         </div>
         <span class="sc-img__num" aria-hidden="true">03</span>
       </div>
+
     </div>
-  </section>
+  </section><!-- /showcase -->
 
 
-  <!-- ══════════ FOOTER ══════════ -->
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
   <footer class="footer">
     <div class="footer__blade"></div>
     <p class="footer__brand">SOLITUDE — THE ART OF CHOOSING YOURSELF</p>
     <p class="footer__credit">Crafted by Basudev Dhakal</p>
 
     <!--
-      A single pixel — rainbow cycling — lives in the very
-      bottom-right corner. No label. No hint. Just there.
+      Easter egg: a single rainbow-cycling pixel
+      lives in the bottom-right corner.
+      No label. No hint. Just there.
     -->
-    <a class="easter-egg"
-       href="https://raktapyas.github.io/portfilo/"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-hidden="true"
-       tabindex="-1"></a>
+    <a
+      class="easter-egg"
+      href="https://raktapyas.github.io/portfilo/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-hidden="true"
+      tabindex="-1"
+    ></a>
   </footer>
+
 
   <script src="script.js"></script>
 </body>
